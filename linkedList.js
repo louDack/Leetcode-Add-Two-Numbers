@@ -45,7 +45,7 @@ function NumToLL(num) {
 // push, pop
 
 // ************************************************************************************
-// Adding two LL with different length with no carry.
+// Adding two LL with different length with carry.
 // L1 = 99 => reversed: 99
 // L2 =  1 => reversed: 1
 // result = 100 => reversed: 001
