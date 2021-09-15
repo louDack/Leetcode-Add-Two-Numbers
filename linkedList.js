@@ -45,17 +45,27 @@ function NumToLL(num) {
 // push, pop
 
 // ************************************************************************************
-// Adding two LL with equal length with no carry.
-// L1 = 4581
-// L2 = 2317
-// result = 6898
+// Adding two LL with different length with no carry.
+// L1 = 581 => reversed: 185
+// L2 =  11 => reversed: 11
+// result = 592 => reversed: 295
 
-let L1 = NumToLL(4581)
-let L2 = NumToLL(2317)
-let sum, prevNode = null, finalSum
+// let L1 = NumToLL(581)
+// let L2 = NumToLL(11)
+let L1 = NumToLL(534)
+let L2 = NumToLL(11111111)
+let sum, prevNode = null, finalSum, result
 
 do {
-    let result = L1.val + L2.val
+    if (L1 === null) {
+        result = L2.val
+    }
+    else if (L2 === null) {
+        result = L1.val
+    }
+    else {
+        result = L1.val + L2.val
+    }
     
     // Create first node of LL
     sum = new ListNode(result)
@@ -71,10 +81,20 @@ do {
     }
 
     prevNode = sum
-    // Iterate to next node in L1/L2
-    L1 = L1.next
-    L2 = L2.next
 
-} while (L1 !== null && L2 !== null)
+    // Iterate to next node in L1/L2
+    if (L1 === null) {
+        L2 = L2.next
+    }
+    else if (L2 === null) {
+        L1 = L1.next
+    }
+    else {
+        L1 = L1.next
+        L2 = L2.next
+    }
+
+// Both can't be null. At least one has to non-null.
+} while (L1 !== null || L2 !== null)
 
 console.log(finalSum)
